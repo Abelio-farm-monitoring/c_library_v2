@@ -72,6 +72,8 @@ typedef struct param_union {
  * which should be the same as gcc on little-endian arm. When using shifts/masks the value will be treated as a 64 bit unsigned number,
  * and the bits pulled out using the shifts/masks.
 */
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wpedantic"
 MAVPACKED(
 typedef struct param_union_extended {
     union {
@@ -93,6 +95,7 @@ typedef struct param_union_extended {
     uint8_t data[8];
     };
 }) mavlink_param_union_double_t;
+#pragma GCC diagnostic pop
 
 /**
  * This structure is required to make the mavlink_send_xxx convenience functions
